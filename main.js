@@ -17,21 +17,30 @@ function formatarNumero(numero) {
     }
 }
 
+// Selecionando o formulário pelo ID
 const form = document.getElementById('form-contatos')
+// Adicionando um ouvinte de evento para o envio do formulário
 form.addEventListener('submit', function (e) {
+// Prevenindo o comportamento padrão do formulário, que é recarregar a página após o envio
     e.preventDefault()
 
+// Selecionando os elementos de input pelo ID
     const inputNomeContato = document.getElementById('nome-contato')
     const inputNumeroContato = document.getElementById('numero-contato')
 
+// Criando uma linha de tabela HTML com os valores dos inputs
     let linha = '<tr>'
-    linha += `<td>${inputNomeContato.value}</td>`
-    linha += `<td>${formatarNumero(inputNumeroContato.value)}</td>`
+    linha += `<td>${inputNomeContato.value}</td>` // Inserindo o nome do contato na célula da tabela
+    linha += `<td>${formatarNumero(inputNumeroContato.value)}</td>` // Inserindo o número do contato formatado na célula da tabela
     linha += '</tr>'
 
+// Selecionando o corpo da tabela
     const corpoTabela = document.querySelector('tbody')
+
+// Adicionando a linha criada ao final do corpo da tabela
     corpoTabela.innerHTML += linha
 
+// Limpando os valores dos inputs após o envio do formulário
     inputNomeContato.value = ''
     inputNumeroContato.value = ''
 })
